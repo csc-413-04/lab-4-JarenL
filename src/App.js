@@ -5,15 +5,34 @@ import { connect } from 'react-redux';
 import { doTest } from './redux/actions';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: 0
+    }
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  onClickHandler = () => {
+    let inc = this.state.count += 1;
+    this.setState({
+      count: inc
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Jaren   
           </p>
-          <h2>413 Starter Kit </h2>
+          <h2>413 Starter Kit - Hello</h2>
+          <h2>Current Count = {this.state.count}</h2>
+
+          <button onClick={this.onClickHandler}> Increment</button>
+
         </header>
       </div>
     );
